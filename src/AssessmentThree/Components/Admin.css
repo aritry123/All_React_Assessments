@@ -1,0 +1,9 @@
+.k1:hover {
+    transition: all 0.3s linear;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 5px 4px #dcdde1;
+}
+.x:hover {
+    transition: all 0.3s linear;
+    transform: scale(1.05);
+}
