@@ -3,29 +3,44 @@ import {
   Nav,
   NavLink,
   Bars,
-  NavMenu,
-  NavBtn,
-  NavBtnLink,
+  NavMenu
 } from './NavbarElements';
-  
+import Text from 'react-text-typing'
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   return (
     <>
       <Nav>
         <Bars />
         <NavMenu>
-          <NavLink to='/' style={({isActive})=>({color: isActive ? 'red' : 'blue'})}>
+          <NavLink to='/'>
             Sign Up
           </NavLink>
-          <NavLink to='/signIn' style={({isActive})=>({color: isActive ? 'red' : 'blue'})}>
+          <NavLink to='/signIn'>
             Sign In
           </NavLink>
-          <NavLink to='/dashboard' style={({isActive})=>({color: isActive ? 'red' : 'blue'})}>
+          <NavLink to='/dashboard'>
             Dashboard
           </NavLink>
-          <NavLink to='/products' style={({isActive})=>({color: isActive ? 'red' : 'blue'})}>
+          <div className="nav-item dropdown">
+          <button className="nav-link dropdown-toggle" role='button' id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             Shopping
-          </NavLink>
+          </button>
+          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><NavLink to='/shopping/home' className="dropdown-item">
+            Home
+          </NavLink></li>
+          <li><NavLink to='/shopping/search' className="dropdown-item">
+            Search Books
+          </NavLink></li>
+          <li><NavLink to='/shopping/price' className="dropdown-item">
+            Price
+          </NavLink></li>
+          <li><NavLink to='/shopping/rating' className="dropdown-item">
+            Rating
+          </NavLink></li>
+          </ul>
+          </div>
         </NavMenu>
       </Nav>
     </>

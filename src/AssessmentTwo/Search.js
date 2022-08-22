@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 const Search=(props)=>{
     const navigate=useNavigate()
-    const [searchItem,setSearchItem]=useState(props.data)
-    const [res,setRes]=useState(searchItem)
     const [author,setAuthor]=useState('')
     const [inp,setInp]=useState('')
     const handleIt=(e)=>{
@@ -13,23 +11,32 @@ const Search=(props)=>{
         if(val==='srh') setInp(e.target.value)
     }
     const handleSearch=(e)=>{
+        e.preventDefault()
+        if(!inp) return alert("Field empty!")
         setAuthor(inp)
-        
+        clearForm()
     }
-    // useEffect(()=>{
-    //     setRes(searchItem.filter((item)=>item.author===author))
-    // },[author])
+    const handleKey=(e)=>{
+        if(e.key==='Enter') {
+            e.preventDefault()
+            if(!inp) return alert("Field empty!")
+            setAuthor(inp)
+            clearForm()
+        }
+    }
+    const clearForm=()=>{
+        setInp('')
+    }
     return(
         <>
-        {console.log(res)}
-        <div>
+        {/* <div>
             <button onClick={(e)=>handleIt('home')}>Home</button>
             <button onClick={(e)=>handleIt('search')}>Search Books</button>
             <button onClick={(e)=>handleIt('price')}>Price</button>
             <button onClick={(e)=>handleIt('rating')}>Rating</button>
-        </div>
+        </div> */}
         <form>
-            <input type='text' placeholder="Author" onChange={(e)=>handleChange(e,'srh')} value={inp}></input>
+            <input type='text' placeholder="Author" onChange={(e)=>handleChange(e,'srh')} onKeyDown={(e)=>handleKey(e)} value={inp}></input>
             <button onClick={(e)=>handleSearch(e)}>Search</button>
         </form>
         <div className="row">
@@ -44,6 +51,8 @@ const Search=(props)=>{
                                 <br/> <b>Price: </b>{item.price}
                                 <br/> <b>Ratings: </b>{item.rating}
                                 </p>
+                                <button>Add to Cart</button>
+                                <button>Add to Wishlist</button>
                             </div>
                         </div>
                     </div>
