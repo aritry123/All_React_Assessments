@@ -55,7 +55,7 @@ const Slice=createSlice({
         },
         [postMovies.fulfilled]:(state,action)=>{
             state.data.loading=false
-            state.data.movieData=[{id:Date.now(),...action.payload},...state.data.movieData]
+            state.data.movieData=[...state.data.movieData,{id:Date.now(),...action.payload}]
         },
         [postMovies.rejected]:(state,action)=>{
             state.data.loading=false
