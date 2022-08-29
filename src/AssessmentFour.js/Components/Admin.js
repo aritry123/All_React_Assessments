@@ -6,6 +6,7 @@ import { get } from '../Slice'
 import { remove } from '../Slice'
 import { update } from '../Slice'
 import { logout } from '../Slice'
+import { changeRole } from '../Slice'
 function Admin(){
     const navigate=useNavigate()
     const dispatch=useDispatch()
@@ -20,6 +21,7 @@ function Admin(){
     const logoutMethod=(e)=>{
         e.preventDefault()
         dispatch(logout())
+        dispatch(changeRole())
         navigate('/login')
     }
     const handleChange=(e,val)=>{

@@ -93,7 +93,9 @@ const Slice=createSlice({
         data:initialValue
     },
     reducers:{
-        
+        changeRole:(state,action)=>{
+            state.data.role=''
+        }
     },
     extraReducers:{
         [signup.pending]:(state,action)=>{
@@ -174,4 +176,5 @@ const Slice=createSlice({
         }
     }
 })
+export const {changeRole}=Slice.actions
 export default Slice.reducer
